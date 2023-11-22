@@ -1,0 +1,17 @@
+<%- include("./partials/header") %>
+<h1>Home</h1>
+<p>All your posts are displayed below.<br>Add new post with compose tab, click on compose and write title and content of your post.<br>Click on about tab to know about the website.<br>Click on contact tab to connect to the developer.</p>
+<% newPostItems.forEach(function (item){ %>
+    <form action="/delete" method="post">
+    <h1>
+        <%= item.title %>
+    </h1>
+        <p>
+            <%= (item.content).slice(0,100)+"..." %>
+            <a href="/posts/<%= item._id %>">Read More</a>
+            <button type="submit" name="deletePost" id="delete" value="<%= item._id %>"><img src="trash.svg" class="delete-img"></button>
+        </p>
+    </form>
+    <% }) %>
+    <div class="footer-padding"></div>
+<%- include("./partials/footer") %>
